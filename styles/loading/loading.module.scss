@@ -1,0 +1,22 @@
+.loading {
+  position: fixed;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  .content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .overtext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 30px;
+    color: yellow;
+  }
+}
