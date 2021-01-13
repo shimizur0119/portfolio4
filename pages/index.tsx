@@ -21,6 +21,7 @@ const IndexPage = () => {
 
   return (
     <>
+      <Loading open={loadingOpen} />
       <Layout title="index | シミズのポートフォリオ">
         <h1>Hello Next.js 👋</h1>
         <p>
@@ -32,7 +33,6 @@ const IndexPage = () => {
           <ThreeObject />
         </div>
       </Layout>
-      <Loading open={loadingOpen} />
     </>
   )
 }
