@@ -2,17 +2,21 @@ import style from "../../styles/loading/loading.module.scss"
 import dynamic from 'next/dynamic'
 
 const ThreeObjectNoSSR = dynamic(
-  () => import('../webGL/object1/threeObject'),
+  () => import('../webGL/threeObject'),
   { ssr: false }
 )
 
-const Loading = () => {
+const Loading = ({ open }: { open: boolean }) => {
+  const openClass = open ? style.open : ""
   return (
     <>
-      <div className={style.loading}>
+      <div className={`${style.loading} ${openClass}`}>
         <div className={style.content}>
           <ThreeObjectNoSSR />
-          <div className={style.overtext}>hello world</div>
+          <div className={style.overtext} data-aos="fade-zoom-in">
+            <div className={style.overtext__text1}>Now loading...</div>
+            <div className={style.overtext__text2}>ではなくアニメーションタイム</div>
+          </div>
         </div>
       </div>
     </>
