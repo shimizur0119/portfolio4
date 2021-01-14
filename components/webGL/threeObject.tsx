@@ -27,7 +27,6 @@ const ThreeObject = () => {
     const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
-    renderer.render(scene, camera);
     function tick() {
       renderer.render(scene, camera); //この部分はtickの中に移動させる
       cube.rotation.x += 0.005;

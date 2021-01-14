@@ -1,41 +1,62 @@
+import { useRef, useState, useEffect } from "react";
+import { Canvas, useFrame, useThree, ReactThreeFiber } from 'react-three-fiber';
+import { OrbitControls } from "three-orbitcontrols-ts";
 import * as THREE from "three";
-import useGetWindowSize from "../../hooks/useGetWindowSize"
 
-const ThreeObject = () => {
-  const { width, height } = useGetWindowSize(20, 0)
-  const onCanvasLoaded = (canvas: HTMLCanvasElement) => {
-    if (!canvas) return
-    // シーンを作成
-    const scene = new THREE.Scene();
-    // ジオメトリーを作成
-    const geometry = new THREE.IcosahedronGeometry(200, 1);
-    // マテリアルを作成
-    const material = new THREE.MeshBasicMaterial({ color: 0xa6b5d7, wireframe: true });
-    // メッシュを作成
-    const cube = new THREE.Mesh(geometry, material);
-    // 3D空間にメッシュを追加
-    scene.add(cube);
-    // カメラを作成
-    const camera = new THREE.PerspectiveCamera(45, 1.0);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-    camera.position.set(0, 0, +600);
-    // レンダラーを作成
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(width, height);
-    renderer.render(scene, camera);
-    function tick() {
-      renderer.render(scene, camera); //この部分はtickの中に移動させる
-      cube.rotation.x += 0.005;
-      cube.rotation.y += 0.01;
-      requestAnimationFrame(tick);
-    }
-    tick();
-  }
+const CameraController = () => {
+  const { camera, gl } = useThree();
+  useEffect(() => {
+    const controls = new OrbitControls(camera, gl.domElement);
+    // controls.minDistance = 10;
+    // controls.maxDistance = 10;
+    return () => { controls.dispose(); };
+  }, [camera, gl]);
+  return null;
+};
+
+const Box = (props: ReactThreeFiber.MeshProps) => {
+  const mesh = useRef({} as THREE.Mesh)
+  const [hovered, setHover] = useState(false)
+  const [active, setActive] = useState(false)
+  useFrame(() => {
+    mesh.current.rotation.x += 0.01
+    mesh.current.rotation.z += 0.02
+  })
   return (
-    <canvas ref={onCanvasLoaded}></canvas>
+    <mesh
+      {...props}
+      ref={mesh}
+      scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+      onClick={() => { setActive(!active) }}
+      onPointerOver={() => setHover(true)}
+      onPointerOut={() => setHover(false)}
+    >
+      <boxGeometry args={[1, 1, 1]} />
+      <meshPhongMaterial color={active ? (hovered ? "red" : "orange") : (hovered ? "blue" : "green")} />
+    </mesh>
   )
 }
 
-export default ThreeObject
+const App = () => {
+  return (
+    <Canvas>
+      <CameraController />
+      <ambientLight />
+      <spotLight intensity={0.3} position={[5, 10, 100]} />
+      <Box position={[2, 0, 0]} />
+      <Box position={[0, 2, 0]} />
+      <Box position={[0, 0, 2]} />
+      <Box position={[-2, 0, 0]} />
+      <Box position={[0, -2, 0]} />
+      <Box position={[0, 0, -2]} />
+      <Box position={[4, 0, 0]} />
+      <Box position={[0, 4, 0]} />
+      <Box position={[0, 0, 4]} />
+      <Box position={[-4, 0, 0]} />
+      <Box position={[0, -4, 0]} />
+      <Box position={[0, 0, -4]} />
+    </Canvas>
+  );
+};
+
+export default App;
