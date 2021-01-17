@@ -8,21 +8,25 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@avatsaev/three-orbitcontrols-ts": "^0.1.5",
+    "@reduxjs/toolkit": "^1.5.0",
     "@types/aos": "^3.0.3",
     "aos": "^2.3.4",
+    "axios": "^0.21.1",
     "next": "latest",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-redux": "^7.2.2",
     "react-three-fiber": "^5.3.12",
     "sass": "^1.32.2",
-    "three": "^0.124.0",
-    "three-orbitcontrols-ts": "^0.1.2"
+    "three": "^0.124.0"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.15",
     "typescript": "4.0"
   },
   "license": "MIT"

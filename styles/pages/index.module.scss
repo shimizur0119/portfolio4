@@ -16,7 +16,38 @@
 .contentWrap {
   position: relative;
   z-index: 2;
-  font-size: 60px;
-  font-weight: 700;
   pointer-events: none;
+  .small {
+    font-size: 30px;
+  }
+  .exSmall {
+    font-size: 15px;
+  }
+  .green {
+    color: green;
+  }
+  .orange {
+    color: orange;
+  }
+  .gaming {
+    /* 横長で虹色を作る */
+    background: linear-gradient(
+        -90deg,
+        #40e0d0,
+        #ff8c00,
+        #ff0080,
+        #ff8c00,
+        #40e0d0
+      )
+      0% center/200%;
+    -webkit-background-clip: text; //テキストでくり抜く
+    -webkit-text-fill-color: transparent; //くり抜いた部分は背景を表示
+    animation: gaming 2s linear infinite;
+  }
+  @keyframes gaming {
+    /* backgroundを移動させる */
+    100% {
+      background-position-x: 200%;
+    }
+  }
 }
