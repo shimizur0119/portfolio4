@@ -4,7 +4,7 @@ import Link from 'next/link'
 import HeaderStyle from "../styles/components/templates/commonHeader.module.scss"
 import MainStyle from "../styles/components/templates/commonMain.module.scss"
 import FooterStyle from "../styles/components/templates/commonFooter.module.scss"
-import Btn1 from "../components/atoms/btn1"
+import Btn1 from "../components/atoms/Btn1"
 
 type Props = {
   children?: ReactNode
@@ -19,8 +19,8 @@ const Layout = ({ children, title = 'シミズのポートフォリオ' }: Props
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <header className={HeaderStyle.commonHeader}>
-      <Link className={HeaderStyle.logo} href="/">
-        <h1>
+      <Link href="/">
+        <h1 className={HeaderStyle.logo}>
           <img src="/static/images/logo.svg" alt="シミズのポートフォリオ" />
         </h1>
       </Link>

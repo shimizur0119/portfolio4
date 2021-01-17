@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { useRef, useState, useEffect } from "react";
-import { Canvas, useFrame, useThree, ReactThreeFiber } from 'react-three-fiber';
+import { useFrame } from 'react-three-fiber';
 import { useDispatch, useSelector } from "react-redux"
 import { StoreType } from "../../stores"
-import { setOrangeCount, changeBoxStatus } from "../../stores/indexReducer"
+import { changeBoxStatus } from "../../stores/indexReducer"
 
 const Box1 = (props: any) => {
     const id: string = props.id

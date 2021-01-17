@@ -1,6 +1,5 @@
 import Style from "../../styles/components/atoms/btn1.module.scss"
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 import { allOrange } from "../../stores/indexReducer"
 
 const Btn1 = () => {

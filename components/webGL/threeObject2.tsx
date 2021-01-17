@@ -1,9 +1,7 @@
-import * as THREE from "three";
-import { useRef, useState, useEffect, useContext } from "react";
-import { Canvas, useFrame, useThree, ReactThreeFiber } from 'react-three-fiber';
+import { Canvas, useFrame } from 'react-three-fiber';
 import CameraController from "./CameraController"
 import Box1 from "./Box1"
-import { useDispatch, useSelector, ReactReduxContext } from "react-redux"
+import { ReactReduxContext } from "react-redux"
 import { forwardContext } from "../usefull/forwardContext"
 
 const WrappedCanvas = forwardContext(ReactReduxContext)(Canvas);

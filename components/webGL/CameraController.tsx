@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-import * as THREE from "three";
 import { useThree } from 'react-three-fiber';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { OrbitControls } from "@avatsaev/three-orbitcontrols-ts";
 
 const CameraController = () => {
